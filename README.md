@@ -20,8 +20,8 @@ This project is a backend application developed using NestJS. The main packages 
 ### Step 1: Clone the Project Repository
 
 ```bash
-git clone <project-repo-url>
-cd <project-directory>
+git clone https://github.com/alikilicw/leaderboard
+cd leaderboard
 ```
 
 ### Step 2: Install Dependencies
