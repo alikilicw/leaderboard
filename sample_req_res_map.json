@@ -1,0 +1,405 @@
+{
+    "info": {
+        "_postman_id": "b86a8950-64ea-45f5-8ae5-71930f90a027",
+        "name": "Leaderboard_",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "20274253"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"username\": \"xxx\",\r\n    \"email\": \"xx@abc.com\",\r\n    \"gender\": \"male\",\r\n    \"phone\": \"0000000000\",\r\n    \"password\": \"12345\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{api}}/auth/register",
+                            "host": ["{{api}}"],
+                            "path": ["auth", "register"]
+                        }
+                    },
+                    "response": {
+                        "data": {
+                            "token": "xxxx"
+                        },
+                        "message": "Your account has been successfully created! Please verify your email by checking on the mail we've sent to your inbox."
+                    }
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"username\": \"xxxx\",\r\n    \"password\": \"12345\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{api}}/auth/login",
+                            "host": ["{{api}}"],
+                            "path": ["auth", "login"]
+                        }
+                    },
+                    "response": {
+                        "data": "User model"
+                    }
+                },
+                {
+                    "name": "Who Am I",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{api}}/auth/whoami",
+                            "host": ["{{api}}"],
+                            "path": ["auth", "whoami"]
+                        }
+                    },
+                    "response": {
+                        "data": "User model"
+                    }
+                },
+                {
+                    "name": "Confirm Email",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmIxMzI5NzYzYTMwNWIxOWM1NjY2ZiIsInVzZXJuYW1lIjoiYWxpa2lsaWMiLCJpYXQiOjE3MzUwNzA1MTAsImV4cCI6MTczNTA3MDgxMH0.fRTY3qVAFRn_bb-wkyx-AOjeoJrvNxiftn-ptmxZPu4",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{api}}/auth/confirm?code=0120",
+                            "host": ["{{api}}"],
+                            "path": ["auth", "confirm"],
+                            "query": [
+                                {
+                                    "key": "code",
+                                    "value": "0120"
+                                }
+                            ]
+                        }
+                    },
+                    "response": {
+                        "data": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "User",
+            "item": [
+                {
+                    "name": "Get Users",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{api}}/users",
+                            "host": ["{{api}}"],
+                            "path": ["users"]
+                        }
+                    },
+                    "response": {
+                        "data": ["User Models"]
+                    }
+                },
+                {
+                    "name": "Get User By Id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{api}}/users/676a4b8b91685736ff7e754e",
+                            "host": ["{{api}}"],
+                            "path": ["users", "676a4b8b91685736ff7e754e"]
+                        }
+                    },
+                    "response": {
+                        "data": "User model"
+                    }
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhbGlraWxpYy53MUBnbWFpbC5jb20iLCJpYXQiOjE3MzM5NTUxMjQsImV4cCI6MTczNjU0NzEyNH0.hylL2WnKVX8XX85PN6uJZNp01XgiGIP34kb6EVzVdoo",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"phone\": \"000000000000\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{api}}/users/5",
+                            "host": ["{{api}}"],
+                            "path": ["users", "5"]
+                        }
+                    },
+                    "response": {
+                        "data": "User model"
+                    }
+                },
+                {
+                    "name": "Delete User",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{api}}/users/676a4b8b91685736ff7e754e",
+                            "host": ["{{api}}"],
+                            "path": ["users", "676a4b8b91685736ff7e754e"]
+                        }
+                    },
+                    "response": "No Response Body - 200 OK"
+                }
+            ]
+        },
+        {
+            "name": "Game",
+            "item": [
+                {
+                    "name": "Create Game",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"Chess\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{api}}/games",
+                            "host": ["{{api}}"],
+                            "path": ["games"]
+                        }
+                    },
+                    "response": {
+                        "data": "Game Model"
+                    }
+                },
+                {
+                    "name": "Get Games",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{api}}/games",
+                            "host": ["{{api}}"],
+                            "path": ["games"]
+                        }
+                    },
+                    "response": {
+                        "data": ["Game Models"]
+                    }
+                },
+                {
+                    "name": "Get Game By Id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{api}}/games/676a6e138ac24e61cf71c640",
+                            "host": ["{{api}}"],
+                            "path": ["games", "676a6e138ac24e61cf71c640"]
+                        }
+                    },
+                    "response": {
+                        "data": "Game Model"
+                    }
+                },
+                {
+                    "name": "Update Game",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\": \"Chess\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{api}}/games/676a6e138ac24e61cf71c640",
+                            "host": ["{{api}}"],
+                            "path": ["games", "676a6e138ac24e61cf71c640"]
+                        }
+                    },
+                    "response": {
+                        "data": "Game Model"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Leaderboard",
+            "item": [
+                {
+                    "name": "Submit Score",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"score\": 350,\r\n    \"gameId\": \"676a6e138ac24e61cf71c640\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{api}}/leaderboard/submit-score",
+                            "host": ["{{api}}"],
+                            "path": ["leaderboard", "submit-score"]
+                        }
+                    },
+                    "response": "No Response Body - 201 OK"
+                },
+                {
+                    "name": "Get Leaderboard",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{api}}/leaderboard/676a6e138ac24e61cf71c640?page=0&limit=2",
+                            "host": ["{{api}}"],
+                            "path": ["leaderboard", "676a6e138ac24e61cf71c640"],
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "0"
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "2"
+                                }
+                            ]
+                        }
+                    },
+                    "response": {
+                        "page": 0,
+                        "limit": 2,
+                        "total": 2,
+                        "data": [
+                            {
+                                "rank": 1,
+                                "playerId": "676a4b8b91685736ff7e754e",
+                                "score": 350
+                            },
+                            {
+                                "rank": 2,
+                                "playerId": "676b1329763a305b19c5666f",
+                                "score": 320
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Get Player Rank",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript",
+                                "packages": {}
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{api}}/leaderboard/676a6e138ac24e61cf71c640/rank",
+                            "host": ["{{api}}"],
+                            "path": ["leaderboard", "676a6e138ac24e61cf71c640", "rank"]
+                        }
+                    },
+                    "response": {
+                        "gameId": "676a6e138ac24e61cf71c640",
+                        "playerId": "676b1329763a305b19c5666f",
+                        "rank": 2,
+                        "score": 320
+                    }
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "xxxx",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": ["pm.environment.set(\"api\",\"http://localhost:5001/api/v1\")\r", ""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": ["\r", ""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "response_Get Player Rank",
+            "value": ""
+        }
+    ]
+}

@@ -4,8 +4,10 @@ This project is a backend application developed using NestJS. The main packages 
 
 - **Mongoose**: ODM (Object Data Modeling) library for interacting with MongoDB.
 - **Joi**: Data validation and schema definition.
-- **JWT**: User authentication and authorization.
+- **JWT**: User authentication and authorization. Bearer tokens was used.
 - **ioredis**: Efficient and fast communication with Redis.
+
+(You can find sample req res map in a file located in project folder. <sample_req_res_map.json>)
 
 ## Installation
 
@@ -33,10 +35,19 @@ npm install
 Create a `.env` file in the project directory and configure it as follows:
 
 ```env
-PORT=3000
-MONGO_URI=mongodb://localhost:27017/nestjs-db
-JWT_SECRET=your_jwt_secret
-REDIS_HOST=127.0.0.1
+PORT=5001
+
+ACCESS_TOKEN_SECRET_KEY=xxxxx
+
+MAIL=xx@abc.com
+MAIL_HOST=xxx
+MAIL_PORT=000
+MAIL_USER=xxx@abc.com
+MAIL_PASS=xxxx
+
+DB_URL="mongodb+srv://xxxx:xxxx@xxxx.b9m6yax.mongodb.net/xxxx?retryWrites=true&w=majority"
+
+REDIS_HOST=xxxx
 REDIS_PORT=6379
 ```
 
@@ -60,12 +71,6 @@ npm run start:prod
 ### 1. Mongoose
 
 Mongoose is an ODM library used to simplify interactions with MongoDB. It is used to connect to MongoDB and define data models.
-
-**Installation:**
-
-```bash
-npm install @nestjs/mongoose mongoose
-```
 
 **Usage:**
 
@@ -92,12 +97,6 @@ export const UserSchema = SchemaFactory.createForClass(User)
 
 Joi is a library used for data validation and schema definition. It is used to validate user inputs.
 
-**Installation:**
-
-```bash
-npm install @hapi/joi
-```
-
 **Usage:**
 
 ```typescript
@@ -113,12 +112,6 @@ export const createUserSchema = Joi.object({
 ### 3. JWT (JSON Web Token)
 
 JWT is used for user authentication and authorization.
-
-**Installation:**
-
-```bash
-npm install @nestjs/jwt jsonwebtoken
-```
 
 **Usage:**
 
@@ -139,12 +132,6 @@ export class AuthModule {}
 ### 4. ioredis
 
 ioredis is a library used for fast and efficient communication with Redis.
-
-**Installation:**
-
-```bash
-npm install ioredis
-```
 
 **Usage:**
 
@@ -172,7 +159,3 @@ redis.get('key', (err, result) => {
 ## Contributing
 
 To contribute, please submit a pull request or open an issue.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
