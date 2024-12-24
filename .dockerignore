@@ -1,0 +1,32 @@
+# Node.js bağımlılık klasörü
+node_modules
+
+# Log dosyaları
+*.log
+
+# Docker'ın oluşturduğu dosyalar
+Dockerfile*
+docker-compose*.yml
+
+# Git ile ilgili dosyalar
+.git
+.gitignore
+
+# IDE ve editör dosyaları
+.vscode
+.idea
+
+# Geçici dosyalar
+*.swp
+*.temp
+*.tmp
+*.bak
+
+# Build klasörleri
+dist
+build
+coverage
+
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
